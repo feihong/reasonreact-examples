@@ -1,15 +1,3 @@
-open Prelude;
-
-module App = {
-  let component = RR.statelessComponent("App");
-
-  let make = _children => {
-    ...component,
-
-    render: _self => <div> {js|你好世界！|js}->s </div>,
-  };
-};
-
 ReactDOMRe.renderToElementWithId(<App />, "index");
 
 /* Sets up hot module replacement using Parcel */
