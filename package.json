@@ -1,0 +1,19 @@
+{
+  "name": "reasonreact-examples",
+  "version": "0.1.0",
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "Feihong",
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "^4.0.8",
+    "parcel-bundler": "^1.10.3",
+    "reason-react": "^0.5.3"
+  },
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world",
+    "start": "yarn parcel index.html"
+  }
+}
