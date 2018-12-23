@@ -3,8 +3,9 @@
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
+import * as Emojilib$ReasonreactExamples from "../bindings/Emojilib.bs.js";
 
-var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "Component1-ReasonreactExamples");
+var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "Emojis-ReasonreactExamples");
 
 function make(_children) {
   return /* record */[
@@ -18,9 +19,12 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
+              var emoji = Emojilib$ReasonreactExamples.getRandom(/* () */0);
               return React.createElement("div", {
-                          className: "text-4xl text-green italic"
-                        }, Prelude$ReasonreactExamples.s("Component 1"));
+                          className: "flex flex-col border items-center"
+                        }, React.createElement("span", undefined, Prelude$ReasonreactExamples.s(emoji[/* name */0])), React.createElement("span", {
+                              className: "text-5xl"
+                            }, Prelude$ReasonreactExamples.s(emoji[/* char */1])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

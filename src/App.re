@@ -3,10 +3,10 @@ open Prelude;
 type page =
   | NotFound
   | Hello
-  | Component1
+  | Emojis
   | Component2;
 
-let sidebarLinks = [|"Hello", "Component1", "Component2"|];
+let sidebarLinks = [|"Hello", "Emojis", "Component2"|];
 
 type state = {currentPage: page};
 
@@ -17,7 +17,7 @@ let getPageFromUrl = url =>
   switch (url.RR.Router.path) {
   | []
   | ["hello"] => Hello
-  | ["component1"] => Component1
+  | ["emojis"] => Emojis
   | ["component2"] => Component2
   | _ => NotFound
   };
@@ -59,7 +59,7 @@ let make = _children => {
              "The content you seek was not found"->s
            </div>
          | Hello => <Hello />
-         | Component1 => <Component1 />
+         | Emojis => <Emojis />
          | Component2 => <Component2 />
          }}
       </div>

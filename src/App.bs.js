@@ -7,13 +7,13 @@ import * as $$String from "bs-platform/lib/es6/string.js";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Hello$ReasonreactExamples from "./components/Hello.bs.js";
+import * as Emojis$ReasonreactExamples from "./components/Emojis.bs.js";
 import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
-import * as Component1$ReasonreactExamples from "./components/Component1.bs.js";
 import * as Component2$ReasonreactExamples from "./components/Component2.bs.js";
 
 var sidebarLinks = /* array */[
   "Hello",
-  "Component1",
+  "Emojis",
   "Component2"
 ];
 
@@ -21,17 +21,17 @@ function getPageFromUrl(url) {
   var match = url[/* path */0];
   if (match) {
     switch (match[0]) {
-      case "component1" : 
-          if (match[1]) {
-            return /* NotFound */0;
-          } else {
-            return /* Component1 */2;
-          }
       case "component2" : 
           if (match[1]) {
             return /* NotFound */0;
           } else {
             return /* Component2 */3;
+          }
+      case "emojis" : 
+          if (match[1]) {
+            return /* NotFound */0;
+          } else {
+            return /* Emojis */2;
           }
       case "hello" : 
           if (match[1]) {
@@ -84,7 +84,7 @@ function make(_children) {
                     tmp = ReasonReact.element(undefined, undefined, Hello$ReasonreactExamples.make(/* array */[]));
                     break;
                 case 2 : 
-                    tmp = ReasonReact.element(undefined, undefined, Component1$ReasonreactExamples.make(/* array */[]));
+                    tmp = ReasonReact.element(undefined, undefined, Emojis$ReasonreactExamples.make(/* array */[]));
                     break;
                 case 3 : 
                     tmp = ReasonReact.element(undefined, undefined, Component2$ReasonreactExamples.make(/* array */[]));
