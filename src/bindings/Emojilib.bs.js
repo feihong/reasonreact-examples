@@ -14,21 +14,26 @@ var defaultEmojiObj = {
   category: "people"
 };
 
+function humanize(s) {
+  return s.replace((/_/g), " ");
+}
+
 function getRandom(param) {
   var index = Random.$$int(emojiCount);
   var name = Belt_Option.getWithDefault(Belt_Array.get(Emojilib.ordered, index), "smile");
   var obj = Belt_Option.getWithDefault(Js_dict.get(Emojilib.lib, name), defaultEmojiObj);
   return /* record */[
-          /* name */name.replace((/_/g), " "),
+          /* name */humanize(name),
           /* char */obj.char,
           /* fitzpatrick_scale */obj.fitzpatrick_scale,
-          /* category */obj.category
+          /* category */humanize(obj.category)
         ];
 }
 
 export {
   emojiCount ,
   defaultEmojiObj ,
+  humanize ,
   getRandom ,
   
 }

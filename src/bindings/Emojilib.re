@@ -26,14 +26,16 @@ let defaultEmojiObj: emojiObj = {
   "category": "people",
 };
 
+let humanize = s => s->Js.String.replace([%bs.raw {|/_/g|}], " ", _);
+
 let getRandom = () => {
   let index = Random.int(emojiCount);
   let name = ordered->Array.get(index)->Option.getWithDefault("smile");
   let obj = lib->Js.Dict.get(name)->Option.getWithDefault(defaultEmojiObj);
   {
-    name: name->Js.String.replace([%bs.raw {|/_/g|}], " ", _),
+    name: name->humanize,
     char: obj##char,
     fitzpatrick_scale: obj##fitzpatrick_scale,
-    category: obj##category,
+    category: obj##category->humanize,
   };
 };
