@@ -19,7 +19,7 @@ function getRandom(param) {
   var name = Belt_Option.getWithDefault(Belt_Array.get(Emojilib.ordered, index), "smile");
   var obj = Belt_Option.getWithDefault(Js_dict.get(Emojilib.lib, name), defaultEmojiObj);
   return /* record */[
-          /* name */name.replace("_", " "),
+          /* name */name.replace((/_/g), " "),
           /* char */obj.char,
           /* fitzpatrick_scale */obj.fitzpatrick_scale,
           /* category */obj.category

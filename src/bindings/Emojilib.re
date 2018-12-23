@@ -31,7 +31,7 @@ let getRandom = () => {
   let name = ordered->Array.get(index)->Option.getWithDefault("smile");
   let obj = lib->Js.Dict.get(name)->Option.getWithDefault(defaultEmojiObj);
   {
-    name: name->Js.String.replace("_", " ", _),
+    name: name->Js.String.replace([%bs.raw {|/_/g|}], " ", _),
     char: obj##char,
     fitzpatrick_scale: obj##fitzpatrick_scale,
     category: obj##category,
