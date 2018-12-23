@@ -1,3 +1,5 @@
+[%bs.raw {|require('./Index.pcss')|}];
+
 ReactDOMRe.renderToElementWithId(<App />, "index");
 
 /* Sets up hot module replacement using Parcel */
