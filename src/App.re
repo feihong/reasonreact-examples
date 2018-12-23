@@ -38,19 +38,21 @@ let make = _children => {
     switch (action) {
     | ChangePage(currentPage) => RR.Update({currentPage: currentPage})
     },
-  render: ({state, send}) =>
-    <div className="App flex flex-row">
-      <div className="SideBar flex flex-col p-4">
+  render: ({state}) =>
+    <div className="App h-screen flex flex-row">
+      <div className="SideBar bg-blue text-white flex flex-col pt-6 px-4">
         {sidebarLinks
          ->Array.map(name =>
              <div
-               key=name onClick={_ => RR.Router.push(name->String.lowercase)}>
+               className="cursor-pointer mb-4"
+               key=name
+               onClick={_ => RR.Router.push(name->String.lowercase)}>
                name->s
              </div>
            )
          ->RR.array}
       </div>
-      <div className="Content p-4">
+      <div className="Content pt-6 pl-4">
         {switch (state.currentPage) {
          | NotFound =>
            <div className="NotFound">

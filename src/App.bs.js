@@ -92,18 +92,19 @@ function make(_children) {
                 
               }
               return React.createElement("div", {
-                          className: "App flex flex-row"
+                          className: "App h-screen flex flex-row"
                         }, React.createElement("div", {
-                              className: "SideBar flex flex-col p-4"
+                              className: "SideBar bg-blue text-white flex flex-col pt-6 px-4"
                             }, Belt_Array.map(sidebarLinks, (function (name) {
                                     return React.createElement("div", {
                                                 key: name,
+                                                className: "cursor-pointer mb-4",
                                                 onClick: (function (param) {
                                                     return ReasonReact.Router[/* push */0]($$String.lowercase(name));
                                                   })
                                               }, Prelude$ReasonreactExamples.s(name));
                                   }))), React.createElement("div", {
-                              className: "Content p-4"
+                              className: "Content pt-6 pl-4"
                             }, tmp));
             }),
           /* initialState */(function (param) {

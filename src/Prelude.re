@@ -5,3 +5,5 @@ module RR = {
 };
 
 let s = RR.string;
+
+let makeStyle = ReactDOMRe.Style.make;
