@@ -2,6 +2,11 @@ open Prelude;
 
 type state = {emojis: array(Emojilib.emoji)};
 
+let imgStyle = {
+  let w = "48px";
+  makeStyle(~height=w, ~width=w, ());
+};
+
 type action =
   | AddEmoji
   | Clear;
@@ -25,25 +30,31 @@ let make = _children => {
   render: ({state, send}) =>
     <div className="Emojis">
       <div className="mb-4">
-        <button className="border px-2 py-1" onClick={_ => send @@ AddEmoji}>
+        <button
+          className="border px-2 py-1 rounded mr-4"
+          onClick={_ => send @@ AddEmoji}>
           "Add"->s
         </button>
-        <button className="border px-2 py-1" onClick={_ => send @@ Clear}>
+        <button
+          className="border px-2 py-1 rounded" onClick={_ => send @@ Clear}>
           "Clear"->s
         </button>
       </div>
       <div>
         {state.emojis
-         ->Array.map(emoji =>
+         ->Array.mapWithIndex((index, emoji) =>
              <div
-               key={emoji.name}
+               key={index->string_of_int}
                className="inline flex flex-col border items-center">
                <span className="mb-1">
                  emoji.name->s
-                 ", "->s
+                 " => "->s
                  emoji.category->s
                </span>
-               <span className="text-5xl"> emoji.char->s </span>
+               <div className="flex content-center">
+                 <span className="text-5xl mr-2"> emoji.char->s </span>
+                 <img style=imgStyle src={Twemoji.emojiUrl(emoji.char)} />
+               </div>
              </div>
            )
          ->RR.array}

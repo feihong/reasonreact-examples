@@ -5,7 +5,12 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
+import * as Twemoji$ReasonreactExamples from "../bindings/Twemoji.bs.js";
 import * as Emojilib$ReasonreactExamples from "../bindings/Emojilib.bs.js";
+
+var w = "48px";
+
+var imgStyle = Prelude$ReasonreactExamples.makeStyle(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, w, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, w, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, /* () */0);
 
 var component = Curry._1(Prelude$ReasonreactExamples.RR[/* reducerComponent */2], "Emojis-ReasonreactExamples");
 
@@ -27,24 +32,29 @@ function make(_children) {
                         }, React.createElement("div", {
                               className: "mb-4"
                             }, React.createElement("button", {
-                                  className: "border px-2 py-1",
+                                  className: "border px-2 py-1 rounded mr-4",
                                   onClick: (function (param) {
                                       return Curry._1(send, /* AddEmoji */0);
                                     })
                                 }, Prelude$ReasonreactExamples.s("Add")), React.createElement("button", {
-                                  className: "border px-2 py-1",
+                                  className: "border px-2 py-1 rounded",
                                   onClick: (function (param) {
                                       return Curry._1(send, /* Clear */1);
                                     })
-                                }, Prelude$ReasonreactExamples.s("Clear"))), React.createElement("div", undefined, Belt_Array.map(param[/* state */1][/* emojis */0], (function (emoji) {
+                                }, Prelude$ReasonreactExamples.s("Clear"))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
                                     return React.createElement("div", {
-                                                key: emoji[/* name */0],
+                                                key: String(index),
                                                 className: "inline flex flex-col border items-center"
                                               }, React.createElement("span", {
                                                     className: "mb-1"
-                                                  }, Prelude$ReasonreactExamples.s(emoji[/* name */0]), Prelude$ReasonreactExamples.s(", "), Prelude$ReasonreactExamples.s(emoji[/* category */3])), React.createElement("span", {
-                                                    className: "text-5xl"
-                                                  }, Prelude$ReasonreactExamples.s(emoji[/* char */1])));
+                                                  }, Prelude$ReasonreactExamples.s(emoji[/* name */0]), Prelude$ReasonreactExamples.s(" => "), Prelude$ReasonreactExamples.s(emoji[/* category */3])), React.createElement("div", {
+                                                    className: "flex content-center"
+                                                  }, React.createElement("span", {
+                                                        className: "text-5xl mr-2"
+                                                      }, Prelude$ReasonreactExamples.s(emoji[/* char */1])), React.createElement("img", {
+                                                        style: imgStyle,
+                                                        src: Twemoji$ReasonreactExamples.emojiUrl(emoji[/* char */1])
+                                                      })));
                                   }))));
             }),
           /* initialState */(function (param) {
@@ -63,8 +73,9 @@ function make(_children) {
 }
 
 export {
+  imgStyle ,
   component ,
   make ,
   
 }
-/* component Not a pure module */
+/* imgStyle Not a pure module */

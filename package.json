@@ -12,8 +12,7 @@
     "emojilib": "^2.4.0",
     "parcel-bundler": "^1.10.3",
     "reason-react": "^0.5.3",
-    "tailwindcss": "^0.7.2",
-    "twemoji": "^11.2.0"
+    "tailwindcss": "^0.7.2"
   },
   "scripts": {
     "build": "bsb -make-world",
