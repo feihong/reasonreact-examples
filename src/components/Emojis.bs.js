@@ -20,7 +20,9 @@ function make(_children) {
           /* reactClassInternal */component[/* reactClassInternal */1],
           /* handedOffState */component[/* handedOffState */2],
           /* willReceiveProps */component[/* willReceiveProps */3],
-          /* didMount */component[/* didMount */4],
+          /* didMount */(function (param) {
+              return Curry._1(param[/* send */3], /* AddEmoji */0);
+            }),
           /* didUpdate */component[/* didUpdate */5],
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
@@ -29,7 +31,11 @@ function make(_children) {
               var send = param[/* send */3];
               return React.createElement("div", {
                           className: "Emojis"
-                        }, React.createElement("div", {
+                        }, React.createElement("h1", {
+                              className: ""
+                            }, Prelude$ReasonreactExamples.s("Emoji Generator")), React.createElement("div", {
+                              className: "text-xs mb-4"
+                            }, Prelude$ReasonreactExamples.s("(Images from Twemoji)")), React.createElement("div", {
                               className: "mb-4"
                             }, React.createElement("button", {
                                   className: "border px-2 py-1 rounded mr-4",
@@ -42,15 +48,16 @@ function make(_children) {
                                       return Curry._1(send, /* Clear */1);
                                     })
                                 }, Prelude$ReasonreactExamples.s("Clear"))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
+                                    var match = emoji[/* fitzpatrick_scale */2];
                                     return React.createElement("div", {
                                                 key: String(index),
                                                 className: "inline flex flex-col border items-center"
                                               }, React.createElement("span", {
                                                     className: "mb-1"
-                                                  }, Prelude$ReasonreactExamples.s(emoji[/* name */0]), Prelude$ReasonreactExamples.s(" => "), Prelude$ReasonreactExamples.s(emoji[/* category */3])), React.createElement("div", {
+                                                  }, Prelude$ReasonreactExamples.s(emoji[/* name */0]), Prelude$ReasonreactExamples.s(" => "), Prelude$ReasonreactExamples.s(emoji[/* category */3]), match ? Prelude$ReasonreactExamples.s(" (fitzpatrick scale)") : null), React.createElement("div", {
                                                     className: "flex content-center"
                                                   }, React.createElement("span", {
-                                                        className: "text-5xl mr-2"
+                                                        className: "text-5xl mr-4"
                                                       }, Prelude$ReasonreactExamples.s(emoji[/* char */1])), React.createElement("img", {
                                                         style: imgStyle,
                                                         src: Twemoji$ReasonreactExamples.emojiUrl(emoji[/* char */1])

@@ -40,11 +40,14 @@ let make = _children => {
     },
   render: ({state}) =>
     <div className="App h-screen flex flex-row">
-      <div className="SideBar bg-blue text-white flex flex-col pt-6 px-4">
+      <div className="SideBar bg-blue text-white flex flex-col">
+        <div className="pt-4 px-4 pb-4 border-b font-bold text-lg">
+          "RR Examples"->s
+        </div>
         {sidebarLinks
          ->Array.map(name =>
              <div
-               className="cursor-pointer mb-4"
+               className="cursor-pointer px-4 py-3 hover:bg-blue-dark"
                key=name
                onClick={_ => RR.Router.push(name->String.lowercase)}>
                name->s
@@ -52,7 +55,7 @@ let make = _children => {
            )
          ->RR.array}
       </div>
-      <div className="Content pt-6 pl-4">
+      <div className="Content pt-6 pl-6">
         {switch (state.currentPage) {
          | NotFound =>
            <div className="NotFound">

@@ -9,13 +9,18 @@ import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 var emojiCount = Emojilib.ordered.length;
 
 var defaultEmojiObj = {
-  char: "fun",
+  char: "smile",
   fitzpatrick_scale: false,
   category: "people"
 };
 
 function humanize(s) {
   return s.replace((/_/g), " ");
+}
+
+function randomFitzpatrickScale(param) {
+  var index = Random.$$int(Emojilib.fitzpatrick_scale_modifiers.length);
+  return Belt_Option.getWithDefault(Belt_Array.get(Emojilib.fitzpatrick_scale_modifiers, index), "🏻");
 }
 
 function getRandom(param) {
@@ -34,6 +39,7 @@ export {
   emojiCount ,
   defaultEmojiObj ,
   humanize ,
+  randomFitzpatrickScale ,
   getRandom ,
   
 }

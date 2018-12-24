@@ -18,6 +18,8 @@ let make = _children => {
 
   initialState: () => {emojis: [||]},
 
+  didMount: ({send}) => send @@ AddEmoji,
+
   reducer: (action, state) =>
     switch (action) {
     | AddEmoji =>
@@ -29,6 +31,8 @@ let make = _children => {
 
   render: ({state, send}) =>
     <div className="Emojis">
+      <h1 className=""> "Emoji Generator"->s </h1>
+      <div className="text-xs mb-4"> "(Images from Twemoji)"->s </div>
       <div className="mb-4">
         <button
           className="border px-2 py-1 rounded mr-4"
@@ -50,9 +54,10 @@ let make = _children => {
                  emoji.name->s
                  " => "->s
                  emoji.category->s
+                 {emoji.fitzpatrick_scale ? " (fitzpatrick scale)"->s : RR.null}
                </span>
                <div className="flex content-center">
-                 <span className="text-5xl mr-2"> emoji.char->s </span>
+                 <span className="text-5xl mr-4"> emoji.char->s </span>
                  <img style=imgStyle src={Twemoji.emojiUrl(emoji.char)} />
                </div>
              </div>
