@@ -45,6 +45,26 @@ function moodFromJs(param) {
   return Js_mapperRt.revSearch(7, jsMapperConstantArray, param);
 }
 
+function MakeComponent(JC) {
+  var make = function (mood, size, color, children) {
+    var tmp = { };
+    var tmp$1 = Belt_Option.map(mood, moodToJs);
+    if (tmp$1 !== undefined) {
+      tmp.mood = Caml_option.valFromOption(tmp$1);
+    }
+    if (size !== undefined) {
+      tmp.size = Caml_option.valFromOption(size);
+    }
+    if (color !== undefined) {
+      tmp.color = Caml_option.valFromOption(color);
+    }
+    return ReasonReact.wrapJsForReason(JC[/* reactClass */0], tmp, children);
+  };
+  return /* module */[/* make */make];
+}
+
+var JC = /* module */[/* Backpack */ReactKawaii.Backpack];
+
 function make(mood, size, color, children) {
   var tmp = { };
   var tmp$1 = Belt_Option.map(mood, moodToJs);
@@ -57,13 +77,156 @@ function make(mood, size, color, children) {
   if (color !== undefined) {
     tmp.color = Caml_option.valFromOption(color);
   }
-  return ReasonReact.wrapJsForReason(ReactKawaii.Backpack, tmp, children);
+  return ReasonReact.wrapJsForReason(JC[/* reactClass */0], tmp, children);
 }
+
+var Backpack = /* module */[/* make */make];
+
+var JC$1 = /* module */[/* Browser */ReactKawaii.Browser];
+
+function make$1(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$1[/* reactClass */0], tmp, children);
+}
+
+var Browser = /* module */[/* make */make$1];
+
+var JC$2 = /* module */[/* CreditCard */ReactKawaii.CreditCard];
+
+function make$2(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$2[/* reactClass */0], tmp, children);
+}
+
+var CreditCard = /* module */[/* make */make$2];
+
+var JC$3 = /* module */[/* Ghost */ReactKawaii.Ghost];
+
+function make$3(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$3[/* reactClass */0], tmp, children);
+}
+
+var Ghost = /* module */[/* make */make$3];
+
+var JC$4 = /* module */[/* IceCream */ReactKawaii.IceCream];
+
+function make$4(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$4[/* reactClass */0], tmp, children);
+}
+
+var IceCream = /* module */[/* make */make$4];
+
+var JC$5 = /* module */[/* Mug */ReactKawaii.Mug];
+
+function make$5(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$5[/* reactClass */0], tmp, children);
+}
+
+var Mug = /* module */[/* make */make$5];
+
+var JC$6 = /* module */[/* Planet */ReactKawaii.Planet];
+
+function make$6(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$6[/* reactClass */0], tmp, children);
+}
+
+var Planet = /* module */[/* make */make$6];
+
+var JC$7 = /* module */[/* SpeechBubble */ReactKawaii.SpeechBubble];
+
+function make$7(mood, size, color, children) {
+  var tmp = { };
+  var tmp$1 = Belt_Option.map(mood, moodToJs);
+  if (tmp$1 !== undefined) {
+    tmp.mood = Caml_option.valFromOption(tmp$1);
+  }
+  if (size !== undefined) {
+    tmp.size = Caml_option.valFromOption(size);
+  }
+  if (color !== undefined) {
+    tmp.color = Caml_option.valFromOption(color);
+  }
+  return ReasonReact.wrapJsForReason(JC$7[/* reactClass */0], tmp, children);
+}
+
+var SpeechBubble = /* module */[/* make */make$7];
 
 export {
   moodToJs ,
   moodFromJs ,
-  make ,
+  MakeComponent ,
+  Backpack ,
+  Browser ,
+  CreditCard ,
+  Ghost ,
+  IceCream ,
+  Mug ,
+  Planet ,
+  SpeechBubble ,
   
 }
-/* ReasonReact Not a pure module */
+/* JC Not a pure module */

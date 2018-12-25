@@ -1,4 +1,5 @@
 open Prelude;
+open Kawaii;
 
 let component = RR.statelessComponent(__MODULE__);
 
@@ -7,7 +8,7 @@ let make = _children => {
 
   render: _self =>
     <div className="KawaiiDemo">
-      <h1> "React-Kawaii Demo"->s </h1>
-      <Kawaii mood=`happy />
+      <h1 className="mb-4"> "React-Kawaii Demo"->s </h1>
+      <SpeechBubble mood=`shocked />
     </div>,
 };
