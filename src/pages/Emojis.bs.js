@@ -5,7 +5,7 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
-import * as Button$ReasonreactExamples from "./Button.bs.js";
+import * as Button$ReasonreactExamples from "../components/Button.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 import * as Twemoji$ReasonreactExamples from "../bindings/Twemoji.bs.js";
 import * as Emojilib$ReasonreactExamples from "../bindings/Emojilib.bs.js";

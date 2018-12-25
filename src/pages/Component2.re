@@ -6,7 +6,8 @@ let make = _children => {
   ...component,
 
   render: _self =>
-    <div className="text-orange text-5xl underline capitalize">
-      "Component 2"->s
+    <div className="KawaiiDemo">
+      <h1> "React-Kawaii Demo"->s </h1>
+      <Kawaii mood="sad" />
     </div>,
 };

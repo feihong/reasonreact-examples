@@ -2,6 +2,8 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as ReasonReact from "reason-react/src/ReasonReact.js";
+import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 
 var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "Component2-ReasonreactExamples");
@@ -19,8 +21,8 @@ function make(_children) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
               return React.createElement("div", {
-                          className: "text-orange text-5xl underline capitalize"
-                        }, Prelude$ReasonreactExamples.s("Component 2"));
+                          className: "KawaiiDemo"
+                        }, React.createElement("h1", undefined, Prelude$ReasonreactExamples.s("React-Kawaii Demo")), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.make("sad", undefined, undefined, /* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
