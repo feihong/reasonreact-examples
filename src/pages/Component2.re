@@ -8,6 +8,6 @@ let make = _children => {
   render: _self =>
     <div className="KawaiiDemo">
       <h1> "React-Kawaii Demo"->s </h1>
-      <Kawaii mood="sad" />
+      <Kawaii mood=`happy />
     </div>,
 };

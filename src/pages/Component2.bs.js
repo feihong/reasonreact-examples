@@ -22,7 +22,7 @@ function make(_children) {
           /* render */(function (_self) {
               return React.createElement("div", {
                           className: "KawaiiDemo"
-                        }, React.createElement("h1", undefined, Prelude$ReasonreactExamples.s("React-Kawaii Demo")), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.make("sad", undefined, undefined, /* array */[])));
+                        }, React.createElement("h1", undefined, Prelude$ReasonreactExamples.s("React-Kawaii Demo")), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.make(/* happy */572482848, undefined, undefined, /* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

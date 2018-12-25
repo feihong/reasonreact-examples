@@ -2,6 +2,17 @@ open Prelude;
 
 [@bs.module "react-kawaii"] external backpack: RR.reactClass = "Backpack";
 
+[@bs.deriving jsConverter]
+type mood = [
+  | `sad
+  | `shocked
+  | `happy
+  | `blissful
+  | `lovestruck
+  | `excited
+  | `ko
+];
+
 [@bs.deriving abstract]
 type jsProps = {
   [@bs.optional]
@@ -15,6 +26,6 @@ type jsProps = {
 let make = (~mood=?, ~size=?, ~color=?, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=backpack,
-    ~props=jsProps(~mood?, ~size?, ~color?, ()),
+    ~props=jsProps(~mood=?mood->Option.map(moodToJs), ~size?, ~color?, ()),
     children,
   );

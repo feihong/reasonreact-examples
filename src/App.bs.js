@@ -7,10 +7,10 @@ import * as React from "react";
 import * as $$String from "bs-platform/lib/es6/string.js";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
-import * as Hello$ReasonreactExamples from "./components/Hello.bs.js";
-import * as Emojis$ReasonreactExamples from "./components/Emojis.bs.js";
+import * as Hello$ReasonreactExamples from "./pages/Hello.bs.js";
+import * as Emojis$ReasonreactExamples from "./pages/Emojis.bs.js";
 import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
-import * as Component2$ReasonreactExamples from "./components/Component2.bs.js";
+import * as Component2$ReasonreactExamples from "./pages/Component2.bs.js";
 
 var sidebarLinks = /* array */[
   /* tuple */[
