@@ -45,14 +45,16 @@ let make = _children => {
           "RR Examples"->s
         </div>
         {sidebarLinks
-         ->Array.map(name =>
+         ->Array.map(name => {
+             let className =
+               Cn.make(["cursor-pointer px-4 py-3 hover:bg-blue-dark"]);
              <div
-               className="cursor-pointer px-4 py-3 hover:bg-blue-dark"
+               className
                key=name
                onClick={_ => RR.Router.push(name->String.lowercase)}>
                name->s
-             </div>
-           )
+             </div>;
+           })
          ->RR.array}
       </div>
       <div className="Content pt-6 pl-6">
