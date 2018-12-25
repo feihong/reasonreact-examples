@@ -6,7 +6,11 @@ type page =
   | Emojis
   | Component2;
 
-let sidebarLinks = [|"Hello", "Emojis", "Component2"|];
+let sidebarLinks = [|
+  ("Hello", Hello),
+  ("Emojis", Emojis),
+  ("Component2", Component2),
+|];
 
 type state = {currentPage: page};
 
@@ -38,27 +42,37 @@ let make = _children => {
     switch (action) {
     | ChangePage(currentPage) => RR.Update({currentPage: currentPage})
     },
-  render: ({state}) =>
+  render: ({state}) => {
+    let {currentPage} = state;
+
     <div className="App h-screen flex flex-row">
       <div className="SideBar bg-blue text-white flex flex-col">
         <div className="pt-4 px-4 pb-4 border-b font-bold text-lg">
           "RR Examples"->s
         </div>
         {sidebarLinks
-         ->Array.map(name => {
+         ->Array.map(((name, page)) => {
              let className =
-               Cn.make(["cursor-pointer px-4 py-3 hover:bg-blue-dark"]);
+               Cn.make([
+                 "px-4 py-3",
+                 currentPage == page ?
+                   "cursor-default bg-blue-darker" :
+                   "cursor-pointer hover:bg-blue-dark",
+               ]);
              <div
                className
                key=name
-               onClick={_ => RR.Router.push(name->String.lowercase)}>
+               onClick={_ =>
+                 currentPage != page ?
+                   RR.Router.push(name->String.lowercase) : ()
+               }>
                name->s
              </div>;
            })
          ->RR.array}
       </div>
       <div className="Content pt-6 pl-6">
-        {switch (state.currentPage) {
+        {switch (currentPage) {
          | NotFound =>
            <div className="NotFound">
              "The content you seek was not found"->s
@@ -68,5 +82,6 @@ let make = _children => {
          | Component2 => <Component2 />
          }}
       </div>
-    </div>,
+    </div>;
+  },
 };

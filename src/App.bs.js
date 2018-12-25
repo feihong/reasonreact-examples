@@ -13,9 +13,18 @@ import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
 import * as Component2$ReasonreactExamples from "./components/Component2.bs.js";
 
 var sidebarLinks = /* array */[
-  "Hello",
-  "Emojis",
-  "Component2"
+  /* tuple */[
+    "Hello",
+    /* Hello */1
+  ],
+  /* tuple */[
+    "Emojis",
+    /* Emojis */2
+  ],
+  /* tuple */[
+    "Component2",
+    /* Component2 */3
+  ]
 ];
 
 function getPageFromUrl(url) {
@@ -73,9 +82,9 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (param) {
-              var match = param[/* state */1][/* currentPage */0];
+              var currentPage = param[/* state */1][/* currentPage */0];
               var tmp;
-              switch (match) {
+              switch (currentPage) {
                 case 0 : 
                     tmp = React.createElement("div", {
                           className: "NotFound"
@@ -98,16 +107,27 @@ function make(_children) {
                               className: "SideBar bg-blue text-white flex flex-col"
                             }, React.createElement("div", {
                                   className: "pt-4 px-4 pb-4 border-b font-bold text-lg"
-                                }, Prelude$ReasonreactExamples.s("RR Examples")), Belt_Array.map(sidebarLinks, (function (name) {
+                                }, Prelude$ReasonreactExamples.s("RR Examples")), Belt_Array.map(sidebarLinks, (function (param) {
+                                    var page = param[1];
+                                    var name = param[0];
+                                    var match = currentPage === page;
                                     var className = Cn.make(/* :: */[
-                                          "cursor-pointer px-4 py-3 hover:bg-blue-dark",
-                                          /* [] */0
+                                          "px-4 py-3",
+                                          /* :: */[
+                                            match ? "cursor-default bg-blue-darker" : "cursor-pointer hover:bg-blue-dark",
+                                            /* [] */0
+                                          ]
                                         ]);
                                     return React.createElement("div", {
                                                 key: name,
                                                 className: className,
                                                 onClick: (function (param) {
-                                                    return ReasonReact.Router[/* push */0]($$String.lowercase(name));
+                                                    var match = currentPage !== page;
+                                                    if (match) {
+                                                      return ReasonReact.Router[/* push */0]($$String.lowercase(name));
+                                                    } else {
+                                                      return /* () */0;
+                                                    }
                                                   })
                                               }, Prelude$ReasonreactExamples.s(name));
                                   }))), React.createElement("div", {
