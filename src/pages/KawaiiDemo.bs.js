@@ -6,7 +6,7 @@ import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 
-var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "Component2-ReasonreactExamples");
+var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "KawaiiDemo-ReasonreactExamples");
 
 function make(_children) {
   return /* record */[

@@ -10,7 +10,7 @@ import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Hello$ReasonreactExamples from "./pages/Hello.bs.js";
 import * as Emojis$ReasonreactExamples from "./pages/Emojis.bs.js";
 import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
-import * as Component2$ReasonreactExamples from "./pages/Component2.bs.js";
+import * as KawaiiDemo$ReasonreactExamples from "./pages/KawaiiDemo.bs.js";
 
 var sidebarLinks = /* array */[
   /* tuple */[
@@ -22,8 +22,8 @@ var sidebarLinks = /* array */[
     /* Emojis */2
   ],
   /* tuple */[
-    "Component2",
-    /* Component2 */3
+    "Kawaii",
+    /* KawaiiDemo */3
   ]
 ];
 
@@ -31,12 +31,6 @@ function getPageFromUrl(url) {
   var match = url[/* path */0];
   if (match) {
     switch (match[0]) {
-      case "component2" : 
-          if (match[1]) {
-            return /* NotFound */0;
-          } else {
-            return /* Component2 */3;
-          }
       case "emojis" : 
           if (match[1]) {
             return /* NotFound */0;
@@ -48,6 +42,12 @@ function getPageFromUrl(url) {
             return /* NotFound */0;
           } else {
             return /* Hello */1;
+          }
+      case "kawaii" : 
+          if (match[1]) {
+            return /* NotFound */0;
+          } else {
+            return /* KawaiiDemo */3;
           }
       default:
         return /* NotFound */0;
@@ -97,7 +97,7 @@ function make(_children) {
                     tmp = ReasonReact.element(undefined, undefined, Emojis$ReasonreactExamples.make(/* array */[]));
                     break;
                 case 3 : 
-                    tmp = ReasonReact.element(undefined, undefined, Component2$ReasonreactExamples.make(/* array */[]));
+                    tmp = ReasonReact.element(undefined, undefined, KawaiiDemo$ReasonreactExamples.make(/* array */[]));
                     break;
                 
               }
