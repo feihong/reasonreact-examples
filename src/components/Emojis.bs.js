@@ -4,6 +4,8 @@ import * as Block from "bs-platform/lib/es6/block.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
+import * as ReasonReact from "reason-react/src/ReasonReact.js";
+import * as Button$ReasonreactExamples from "./Button.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 import * as Twemoji$ReasonreactExamples from "../bindings/Twemoji.bs.js";
 import * as Emojilib$ReasonreactExamples from "../bindings/Emojilib.bs.js";
@@ -37,17 +39,11 @@ function make(_children) {
                               className: "text-xs mb-4"
                             }, Prelude$ReasonreactExamples.s("(Images from Twemoji)")), React.createElement("div", {
                               className: "mb-4"
-                            }, React.createElement("button", {
-                                  className: "border px-2 py-1 rounded mr-4",
-                                  onClick: (function (param) {
-                                      return Curry._1(send, /* AddEmoji */0);
-                                    })
-                                }, Prelude$ReasonreactExamples.s("Add")), React.createElement("button", {
-                                  className: "border px-2 py-1 rounded",
-                                  onClick: (function (param) {
-                                      return Curry._1(send, /* Clear */1);
-                                    })
-                                }, Prelude$ReasonreactExamples.s("Clear"))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
+                            }, ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", (function (param) {
+                                        return Curry._1(send, /* AddEmoji */0);
+                                      }), "Add", /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", (function (param) {
+                                        return Curry._1(send, /* Clear */1);
+                                      }), "Clear", /* array */[]))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
                                     var match = emoji[/* fitzpatrick_scale */2];
                                     return React.createElement("div", {
                                                 key: String(index),

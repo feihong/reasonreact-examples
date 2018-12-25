@@ -34,15 +34,8 @@ let make = _children => {
       <h1 className=""> "Emoji Generator"->s </h1>
       <div className="text-xs mb-4"> "(Images from Twemoji)"->s </div>
       <div className="mb-4">
-        <button
-          className="border px-2 py-1 rounded mr-4"
-          onClick={_ => send @@ AddEmoji}>
-          "Add"->s
-        </button>
-        <button
-          className="border px-2 py-1 rounded" onClick={_ => send @@ Clear}>
-          "Clear"->s
-        </button>
+        <Button className="mr-4" text="Add" onClick={_ => send @@ AddEmoji} />
+        <Button className="mr-4" text="Clear" onClick={_ => send @@ Clear} />
       </div>
       <div>
         {state.emojis
