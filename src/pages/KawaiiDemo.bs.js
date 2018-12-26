@@ -4,67 +4,52 @@ import * as Block from "bs-platform/lib/es6/block.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
-import * as Js_mapperRt from "bs-platform/lib/es6/js_mapperRt.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
 import * as Select$ReasonreactExamples from "../components/Select.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
-
-var jsMapperConstantArray = /* array */[
-  /* tuple */[
-    -826612882,
-    "SpeechBubble"
-  ],
-  /* tuple */[
-    -331020616,
-    "Planet"
-  ],
-  /* tuple */[
-    -64353120,
-    "Backpack"
-  ],
-  /* tuple */[
-    3855327,
-    "Mug"
-  ],
-  /* tuple */[
-    80675545,
-    "CreditCart"
-  ],
-  /* tuple */[
-    633016855,
-    "IceCream"
-  ],
-  /* tuple */[
-    646315823,
-    "Ghost"
-  ]
-];
-
-function compChoiceToJs(param) {
-  return Js_mapperRt.binarySearch(7, param, jsMapperConstantArray);
-}
-
-function compChoiceFromJs(param) {
-  return Js_mapperRt.revSearch(7, jsMapperConstantArray, param);
-}
 
 var include = Select$ReasonreactExamples.Make(/* module */[]);
 
 var make = include[1];
 
 var compItems = Belt_Array.map(/* array */[
-      /* Backpack */-64353120,
-      /* CreditCart */80675545,
-      /* Ghost */646315823,
-      /* IceCream */633016855,
-      /* Mug */3855327,
-      /* Planet */-331020616,
-      /* SpeechBubble */-826612882
-    ], (function (comp) {
+      /* tuple */[
+        "backpack",
+        /* Backpack */-64353120
+      ],
+      /* tuple */[
+        "browser",
+        /* Browser */95560584
+      ],
+      /* tuple */[
+        "credit card",
+        /* CreditCard */80675529
+      ],
+      /* tuple */[
+        "ghost",
+        /* Ghost */646315823
+      ],
+      /* tuple */[
+        "ice cream",
+        /* IceCream */633016855
+      ],
+      /* tuple */[
+        "mug",
+        /* Mug */3855327
+      ],
+      /* tuple */[
+        "planet",
+        /* Planet */-331020616
+      ],
+      /* tuple */[
+        "speech bubble",
+        /* SpeechBubble */-826612882
+      ]
+    ], (function (pair) {
         return /* record */[
-                /* label */compChoiceToJs(comp),
-                /* value */comp
+                /* label */pair[0],
+                /* value */pair[1]
               ];
       }));
 
@@ -126,6 +111,8 @@ function make$4(_children) {
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (param) {
               var send = param[/* send */3];
+              var state = param[/* state */1];
+              var match = state[/* component */0];
               return React.createElement("div", {
                           className: "KawaiiDemo"
                         }, React.createElement("h1", {
@@ -140,7 +127,19 @@ function make$4(_children) {
                                   className: "mr-1"
                                 }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, /* happy */572482848, moodItems, undefined, (function (v) {
                                         return Curry._1(send, /* ChangeMood */Block.__(1, [v]));
-                                      }), /* array */[]))), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.SpeechBubble[/* make */0](param[/* state */1][/* mood */1], undefined, undefined, /* array */[])));
+                                      }), /* array */[]))), match >= 80675529 ? (
+                            match >= 633016855 ? (
+                                match >= 646315823 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Ghost[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.IceCream[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))
+                              ) : (
+                                match >= 95560584 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Browser[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.CreditCard[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))
+                              )
+                          ) : (
+                            match >= -64353120 ? (
+                                match >= 3855327 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Mug[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Backpack[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))
+                              ) : (
+                                match >= -331020616 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Planet[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.SpeechBubble[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))
+                              )
+                          ));
             }),
           /* initialState */(function (param) {
               return /* record */[
@@ -167,8 +166,6 @@ function make$4(_children) {
 }
 
 export {
-  compChoiceToJs ,
-  compChoiceFromJs ,
   ComponentSelect ,
   MoodSelect ,
   component ,

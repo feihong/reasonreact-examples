@@ -44,6 +44,7 @@ function Make(C) {
                               })
                           }, Belt_Array.map(items, (function (item) {
                                   return React.createElement("option", {
+                                              key: item[/* label */0],
                                               value: item[/* label */0]
                                             }, Prelude$ReasonreactExamples.s(item[/* label */0]));
                                 })));

@@ -46,7 +46,9 @@ module Make = (C: {type t;}) => {
         }}>
         {items
          ->Array.map(item =>
-             <option value={item.label}> item.label->s </option>
+             <option key={item.label} value={item.label}>
+               item.label->s
+             </option>
            )
          ->RR.array}
       </select>,

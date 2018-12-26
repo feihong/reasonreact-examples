@@ -1,10 +1,10 @@
 open Prelude;
 open Kawaii;
 
-[@bs.deriving jsConverter]
-type compChoice = [
+type component = [
   | `Backpack
-  | `CreditCart
+  | `Browser
+  | `CreditCard
   | `Ghost
   | `IceCream
   | `Mug
@@ -14,20 +14,21 @@ type compChoice = [
 
 module ComponentSelect = {
   include Select.Make({
-    type t = compChoice;
+    type t = component;
   });
 
   let compItems =
     [|
-      `Backpack,
-      `CreditCart,
-      `Ghost,
-      `IceCream,
-      `Mug,
-      `Planet,
-      `SpeechBubble,
+      ("backpack", `Backpack),
+      ("browser", `Browser),
+      ("credit card", `CreditCard),
+      ("ghost", `Ghost),
+      ("ice cream", `IceCream),
+      ("mug", `Mug),
+      ("planet", `Planet),
+      ("speech bubble", `SpeechBubble),
     |]
-    ->Array.map(comp => {label: comp->compChoiceToJs, value: comp});
+    ->Array.map(pair => {label: pair->fst, value: pair->snd});
 
   let make = make(~items=compItems);
 };
@@ -45,12 +46,12 @@ module MoodSelect = {
 };
 
 type state = {
-  component: compChoice,
+  component,
   mood: Kawaii.mood,
 };
 
 type action =
-  | ChangeComponent(compChoice)
+  | ChangeComponent(component)
   | ChangeMood(Kawaii.mood);
 
 let component = RR.reducerComponent(__MODULE__);
@@ -79,6 +80,15 @@ let make = _children => {
         <span className="mr-1"> "Mood:"->s </span>
         <MoodSelect initValue=`happy onChange={v => send @@ ChangeMood(v)} />
       </div>
-      <SpeechBubble mood={state.mood} />
+      {switch (state.component) {
+       | `Backpack => <Backpack mood={state.mood} />
+       | `Browser => <Browser mood={state.mood} />
+       | `CreditCard => <CreditCard mood={state.mood} />
+       | `Ghost => <Ghost mood={state.mood} />
+       | `IceCream => <IceCream mood={state.mood} />
+       | `Mug => <Mug mood={state.mood} />
+       | `Planet => <Planet mood={state.mood} />
+       | `SpeechBubble => <SpeechBubble mood={state.mood} />
+       }}
     </div>,
 };
