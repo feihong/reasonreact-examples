@@ -2,13 +2,119 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
+import * as Js_mapperRt from "bs-platform/lib/es6/js_mapperRt.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
+import * as Select$ReasonreactExamples from "../components/Select.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
+
+var jsMapperConstantArray = /* array */[
+  /* tuple */[
+    -826612882,
+    "SpeechBubble"
+  ],
+  /* tuple */[
+    -331020616,
+    "Planet"
+  ],
+  /* tuple */[
+    -64353120,
+    "Backpack"
+  ],
+  /* tuple */[
+    3855327,
+    "Mug"
+  ],
+  /* tuple */[
+    80675545,
+    "CreditCart"
+  ],
+  /* tuple */[
+    633016855,
+    "IceCream"
+  ],
+  /* tuple */[
+    646315823,
+    "Ghost"
+  ]
+];
+
+function compChoiceToJs(param) {
+  return Js_mapperRt.binarySearch(7, param, jsMapperConstantArray);
+}
+
+function compChoiceFromJs(param) {
+  return Js_mapperRt.revSearch(7, jsMapperConstantArray, param);
+}
+
+var include = Select$ReasonreactExamples.Make(/* module */[]);
+
+var make = include[1];
+
+var compItems = Belt_Array.map(/* array */[
+      /* Backpack */-64353120,
+      /* CreditCart */80675545,
+      /* Ghost */646315823,
+      /* IceCream */633016855,
+      /* Mug */3855327,
+      /* Planet */-331020616,
+      /* SpeechBubble */-826612882
+    ], (function (comp) {
+        return /* record */[
+                /* label */Js_mapperRt.binarySearch(7, comp, jsMapperConstantArray),
+                /* value */comp
+              ];
+      }));
+
+function make$1(param) {
+  return Curry._2(make, param, compItems);
+}
+
+var ComponentSelect_002 = /* component */include[0];
+
+var ComponentSelect = /* module */[
+  /* compChoiceToJs */compChoiceToJs,
+  /* compChoiceFromJs */compChoiceFromJs,
+  ComponentSelect_002,
+  /* compItems */compItems,
+  /* make */make$1
+];
+
+var include$1 = Select$ReasonreactExamples.Make(/* module */[]);
+
+var make$2 = include$1[1];
+
+var moodItems = Belt_Array.map(/* array */[
+      /* sad */5740566,
+      /* shocked */-293737407,
+      /* happy */572482848,
+      /* blissful */-281233442,
+      /* lovestruck */-326580162,
+      /* excited */691427738,
+      /* ko */23972
+    ], (function (mood) {
+        return /* record */[
+                /* label */Kawaii$ReasonreactExamples.moodToJs(mood),
+                /* value */mood
+              ];
+      }));
+
+function make$3(param) {
+  return Curry._2(make$2, param, moodItems);
+}
+
+var MoodSelect_000 = /* component */include$1[0];
+
+var MoodSelect = /* module */[
+  MoodSelect_000,
+  /* moodItems */moodItems,
+  /* make */make$3
+];
 
 var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "KawaiiDemo-ReasonreactExamples");
 
-function make(_children) {
+function make$4(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -24,7 +130,13 @@ function make(_children) {
                           className: "KawaiiDemo"
                         }, React.createElement("h1", {
                               className: "mb-4"
-                            }, Prelude$ReasonreactExamples.s("React-Kawaii Demo")), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.SpeechBubble[/* make */0](/* shocked */-293737407, undefined, undefined, /* array */[])));
+                            }, Prelude$ReasonreactExamples.s("React-Kawaii Demo")), React.createElement("div", {
+                              className: "mb-4"
+                            }, React.createElement("span", {
+                                  className: "mr-1"
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._4(make, /* Ghost */646315823, compItems, "mr-4", /* array */[])), React.createElement("span", {
+                                  className: "mr-1"
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._4(make$2, /* happy */572482848, moodItems, undefined, /* array */[]))), ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.SpeechBubble[/* make */0](/* shocked */-293737407, undefined, undefined, /* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
@@ -34,8 +146,10 @@ function make(_children) {
 }
 
 export {
+  ComponentSelect ,
+  MoodSelect ,
   component ,
-  make ,
+  make$4 as make,
   
 }
-/* component Not a pure module */
+/* include Not a pure module */
