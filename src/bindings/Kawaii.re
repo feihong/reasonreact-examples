@@ -21,9 +21,7 @@ type jsProps = {
   color: string,
 };
 
-module type JsComponent = {let reactClass: RR.reactClass;};
-
-module MakeComponent = (JC: JsComponent) => {
+module MakeComponent = (JC: {let reactClass: RR.reactClass;}) => {
   let make = (~mood=?, ~size=?, ~color=?, children) =>
     ReasonReact.wrapJsForReason(
       ~reactClass=JC.reactClass,
