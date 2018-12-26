@@ -2,7 +2,7 @@ open Prelude;
 
 let component = RR.statelessComponent(__MODULE__);
 
-let make = (~className="", ~onClick, ~text, _children) => {
+let make = (~className="", ~text, ~onClick, _children) => {
   let className =
     Cn.make(["text-grey-darker bg-grey-light px-2 py-1 rounded", className]);
   {

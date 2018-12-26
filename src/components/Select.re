@@ -5,6 +5,7 @@ module Make = (C: {type t;}) => {
     label: string,
     value: C.t,
   };
+
   type state = {current: option(item)};
 
   type action =

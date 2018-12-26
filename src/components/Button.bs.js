@@ -7,7 +7,7 @@ import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 
 var component = Curry._1(Prelude$ReasonreactExamples.RR[/* statelessComponent */0], "Button-ReasonreactExamples");
 
-function make($staropt$star, onClick, text, _children) {
+function make($staropt$star, text, onClick, _children) {
   var className = $staropt$star !== undefined ? $staropt$star : "";
   var className$1 = Cn.make(/* :: */[
         "text-grey-darker bg-grey-light px-2 py-1 rounded",

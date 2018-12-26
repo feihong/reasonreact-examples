@@ -30,6 +30,8 @@ module ComponentSelect = {
     |]
     ->Array.map(pair => {label: pair->fst, value: pair->snd});
 
+  let values = compItems->Array.map(item => item.value);
+
   let make = make(~items=compItems);
 };
 
@@ -41,6 +43,8 @@ module MoodSelect = {
   let moodItems =
     [|`sad, `shocked, `happy, `blissful, `lovestruck, `excited, `ko|]
     ->Array.map(mood => {label: mood->Kawaii.moodToJs, value: mood});
+
+  let values = moodItems->Array.map(item => item.value);
 
   let make = make(~items=moodItems);
 };
@@ -78,7 +82,24 @@ let make = _children => {
           onChange={v => send @@ ChangeComponent(v)}
         />
         <span className="mr-1"> "Mood:"->s </span>
-        <MoodSelect initValue=`happy onChange={v => send @@ ChangeMood(v)} />
+        <MoodSelect
+          className="mr-4"
+          initValue=`happy
+          onChange={v => send @@ ChangeMood(v)}
+        />
+        <Button
+          text="Random"
+          onClick={_ =>
+            choose2(
+              ComponentSelect.values,
+              MoodSelect.values,
+              (x, y) => {
+                send @@ ChangeComponent(x);
+                send @@ ChangeMood(y);
+              },
+            )
+          }
+        />
       </div>
       {switch (state.component) {
        | `Backpack => <Backpack mood={state.mood} />

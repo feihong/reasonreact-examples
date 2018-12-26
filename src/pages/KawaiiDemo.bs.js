@@ -5,6 +5,7 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
+import * as Button$ReasonreactExamples from "../components/Button.bs.js";
 import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
 import * as Select$ReasonreactExamples from "../components/Select.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
@@ -53,6 +54,10 @@ var compItems = Belt_Array.map(/* array */[
               ];
       }));
 
+var values = Belt_Array.map(compItems, (function (item) {
+        return item[/* value */1];
+      }));
+
 function make$1(param) {
   return Curry._2(make, param, compItems);
 }
@@ -62,6 +67,7 @@ var ComponentSelect_000 = /* component */include[0];
 var ComponentSelect = /* module */[
   ComponentSelect_000,
   /* compItems */compItems,
+  /* values */values,
   /* make */make$1
 ];
 
@@ -84,6 +90,10 @@ var moodItems = Belt_Array.map(/* array */[
               ];
       }));
 
+var values$1 = Belt_Array.map(moodItems, (function (item) {
+        return item[/* value */1];
+      }));
+
 function make$3(param) {
   return Curry._2(make$2, param, moodItems);
 }
@@ -93,6 +103,7 @@ var MoodSelect_000 = /* component */include$1[0];
 var MoodSelect = /* module */[
   MoodSelect_000,
   /* moodItems */moodItems,
+  /* values */values$1,
   /* make */make$3
 ];
 
@@ -125,8 +136,13 @@ function make$4(_children) {
                                         return Curry._1(send, /* ChangeComponent */Block.__(0, [v]));
                                       }), /* array */[])), React.createElement("span", {
                                   className: "mr-1"
-                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, /* happy */572482848, moodItems, undefined, (function (v) {
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, /* happy */572482848, moodItems, "mr-4", (function (v) {
                                         return Curry._1(send, /* ChangeMood */Block.__(1, [v]));
+                                      }), /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make(undefined, "Random", (function (param) {
+                                        return Prelude$ReasonreactExamples.choose2(values, values$1, (function (x, y) {
+                                                      Curry._1(send, /* ChangeComponent */Block.__(0, [x]));
+                                                      return Curry._1(send, /* ChangeMood */Block.__(1, [y]));
+                                                    }));
                                       }), /* array */[]))), match >= 80675529 ? (
                             match >= 633016855 ? (
                                 match >= 646315823 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Ghost[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.IceCream[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))

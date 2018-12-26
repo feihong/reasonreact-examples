@@ -39,11 +39,11 @@ function make(_children) {
                               className: "text-xs mb-4"
                             }, Prelude$ReasonreactExamples.s("(Images from Twemoji)")), React.createElement("div", {
                               className: "mb-4"
-                            }, ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", (function (param) {
+                            }, ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", "Add", (function (param) {
                                         return Curry._1(send, /* AddEmoji */0);
-                                      }), "Add", /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", (function (param) {
+                                      }), /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make("mr-4", "Clear", (function (param) {
                                         return Curry._1(send, /* Clear */1);
-                                      }), "Clear", /* array */[]))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
+                                      }), /* array */[]))), React.createElement("div", undefined, Belt_Array.mapWithIndex(param[/* state */1][/* emojis */0], (function (index, emoji) {
                                     var match = emoji[/* fitzpatrick_scale */2];
                                     return React.createElement("div", {
                                                 key: String(index),
