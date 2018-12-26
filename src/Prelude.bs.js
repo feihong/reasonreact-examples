@@ -4,6 +4,10 @@ import * as Belt from "bs-platform/lib/es6/belt.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as ReasonReact from "reason-react/src/ReasonReact.js";
 
+function noOp(param) {
+  return /* () */0;
+}
+
 var RR = /* module */[
   /* statelessComponent */ReasonReact.statelessComponent,
   /* statelessComponentWithRetainedProps */ReasonReact.statelessComponentWithRetainedProps,
@@ -1115,6 +1119,7 @@ export {
   Option ,
   Result ,
   Debug ,
+  noOp ,
   RR ,
   s ,
   makeStyle ,

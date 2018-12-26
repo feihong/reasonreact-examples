@@ -12,8 +12,9 @@ import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 
 function Make(C) {
   var component = Curry._1(Prelude$ReasonreactExamples.RR[/* reducerComponent */2], "Select-ReasonreactExamples");
-  var make = function (initValue, items, $staropt$star, _children) {
+  var make = function (initValue, items, $staropt$star, $staropt$star$1, _children) {
     var className = $staropt$star !== undefined ? $staropt$star : "";
+    var onChange = $staropt$star$1 !== undefined ? $staropt$star$1 : Prelude$ReasonreactExamples.noOp;
     return /* record */[
             /* debugName */component[/* debugName */0],
             /* reactClassInternal */component[/* reactClassInternal */1],
@@ -60,7 +61,16 @@ function Make(C) {
                 var item = items.find((function (item) {
                         return item[/* label */0] === label;
                       }));
-                return /* Update */Block.__(0, [/* record */[/* current */item === undefined ? undefined : Caml_option.some(item)]]);
+                var item$1 = item === undefined ? undefined : Caml_option.some(item);
+                return /* UpdateWithSideEffects */Block.__(2, [
+                          /* record */[/* current */item$1],
+                          (function (param) {
+                              Belt_Option.map(item$1, (function (item) {
+                                      return Curry._1(onChange, item[/* value */1]);
+                                    }));
+                              return /* () */0;
+                            })
+                        ]);
               }),
             /* jsElementWrapped */component[/* jsElementWrapped */13]
           ];

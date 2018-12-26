@@ -1,17 +1,18 @@
 open Prelude;
 open Kawaii;
 
+[@bs.deriving jsConverter]
+type compChoice = [
+  | `Backpack
+  | `CreditCart
+  | `Ghost
+  | `IceCream
+  | `Mug
+  | `Planet
+  | `SpeechBubble
+];
+
 module ComponentSelect = {
-  [@bs.deriving jsConverter]
-  type compChoice = [
-    | `Backpack
-    | `CreditCart
-    | `Ghost
-    | `IceCream
-    | `Mug
-    | `Planet
-    | `SpeechBubble
-  ];
   include Select.Make({
     type t = compChoice;
   });
@@ -43,20 +44,41 @@ module MoodSelect = {
   let make = make(~items=moodItems);
 };
 
-let component = RR.statelessComponent(__MODULE__);
+type state = {
+  component: compChoice,
+  mood: Kawaii.mood,
+};
+
+type action =
+  | ChangeComponent(compChoice)
+  | ChangeMood(Kawaii.mood);
+
+let component = RR.reducerComponent(__MODULE__);
 
 let make = _children => {
   ...component,
 
-  render: _self =>
+  initialState: () => {component: `Ghost, mood: `happy},
+
+  reducer: (action, state) =>
+    switch (action) {
+    | ChangeComponent(component) => RR.Update({...state, component})
+    | ChangeMood(mood) => RR.Update({...state, mood})
+    },
+
+  render: ({state, send}) =>
     <div className="KawaiiDemo">
       <h1 className="mb-4"> "React-Kawaii Demo"->s </h1>
       <div className="mb-4">
         <span className="mr-1"> "Mood:"->s </span>
-        <ComponentSelect className="mr-4" initValue=`Ghost />
+        <ComponentSelect
+          className="mr-4"
+          initValue=`Ghost
+          onChange={v => send @@ ChangeComponent(v)}
+        />
         <span className="mr-1"> "Mood:"->s </span>
-        <MoodSelect initValue=`happy />
+        <MoodSelect initValue=`happy onChange={v => send @@ ChangeMood(v)} />
       </div>
-      <SpeechBubble mood=`shocked />
+      <SpeechBubble mood={state.mood} />
     </div>,
 };

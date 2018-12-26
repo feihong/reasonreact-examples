@@ -12,7 +12,14 @@ module Make = (C: {type t;}) => {
 
   let component = RR.reducerComponent(__MODULE__);
 
-  let make = (~initValue=?, ~items: array(item), ~className="", _children) => {
+  let make =
+      (
+        ~initValue=?,
+        ~items: array(item),
+        ~className="",
+        ~onChange=noOp,
+        _children,
+      ) => {
     ...component,
     initialState: () => {
       current:
@@ -24,7 +31,10 @@ module Make = (C: {type t;}) => {
       switch (action) {
       | ChangeCurrent(label) =>
         let item = items->Js.Array.find(item => item.label == label, _);
-        RR.Update({current: item});
+        RR.UpdateWithSideEffects(
+          {current: item},
+          _ => item->Option.map(item => onChange(item.value))->ignore,
+        );
       },
     render: ({state, send}) =>
       <select

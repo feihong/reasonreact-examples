@@ -1,5 +1,7 @@
 include Belt;
 
+let noOp = _ => ();
+
 module RR = {
   include ReasonReact;
 };
