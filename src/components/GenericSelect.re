@@ -1,3 +1,7 @@
+/*
+ Failed experiment, see this page for explanation of why this doesn't work:
+ https://dev.realworldocaml.org/imperative-programming.html#side-effects-and-weak-polymorphism
+ */
 /* open Prelude;
 
    type item('a) = {
@@ -14,7 +18,7 @@
 
    let component = RR.reducerComponent(__MODULE__);
 
-   let make = (~initValue: option('a)=?, ~items: array(item('a)), _children) => {
+   let make = (~initValue=?, ~items, _children) => {
      ...component,
      initialState: () => {
        current:
