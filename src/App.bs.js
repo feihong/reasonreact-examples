@@ -10,6 +10,7 @@ import * as ReasonReact from "reason-react/src/ReasonReact.js";
 import * as Hello$ReasonreactExamples from "./pages/Hello.bs.js";
 import * as Emojis$ReasonreactExamples from "./pages/Emojis.bs.js";
 import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
+import * as Scratch$ReasonreactExamples from "./pages/Scratch.bs.js";
 import * as KawaiiDemo$ReasonreactExamples from "./pages/KawaiiDemo.bs.js";
 
 var sidebarLinks = /* array */[
@@ -24,6 +25,10 @@ var sidebarLinks = /* array */[
   /* tuple */[
     "Kawaii",
     /* KawaiiDemo */3
+  ],
+  /* tuple */[
+    "Scratch",
+    /* Scratch */4
   ]
 ];
 
@@ -48,6 +53,12 @@ function getPageFromUrl(url) {
             return /* NotFound */0;
           } else {
             return /* KawaiiDemo */3;
+          }
+      case "scratch" : 
+          if (match[1]) {
+            return /* NotFound */0;
+          } else {
+            return /* Scratch */4;
           }
       default:
         return /* NotFound */0;
@@ -98,6 +109,9 @@ function make(_children) {
                     break;
                 case 3 : 
                     tmp = ReasonReact.element(undefined, undefined, KawaiiDemo$ReasonreactExamples.make(/* array */[]));
+                    break;
+                case 4 : 
+                    tmp = ReasonReact.element(undefined, undefined, Scratch$ReasonreactExamples.make(/* array */[]));
                     break;
                 
               }

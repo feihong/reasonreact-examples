@@ -4,12 +4,14 @@ type page =
   | NotFound
   | Hello
   | Emojis
-  | KawaiiDemo;
+  | KawaiiDemo
+  | Scratch;
 
 let sidebarLinks = [|
   ("Hello", Hello),
   ("Emojis", Emojis),
   ("Kawaii", KawaiiDemo),
+  ("Scratch", Scratch),
 |];
 
 type state = {currentPage: page};
@@ -23,6 +25,7 @@ let getPageFromUrl = url =>
   | ["hello"] => Hello
   | ["emojis"] => Emojis
   | ["kawaii"] => KawaiiDemo
+  | ["scratch"] => Scratch
   | _ => NotFound
   };
 
@@ -80,6 +83,7 @@ let make = _children => {
          | Hello => <Hello />
          | Emojis => <Emojis />
          | KawaiiDemo => <KawaiiDemo />
+         | Scratch => <Scratch />
          }}
       </div>
     </div>;
