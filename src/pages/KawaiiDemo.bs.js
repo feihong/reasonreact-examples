@@ -132,17 +132,14 @@ function make$4(_children) {
                               className: "mb-4"
                             }, React.createElement("span", {
                                   className: "mr-1"
-                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make, /* Ghost */646315823, compItems, "mr-4", (function (v) {
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make, state[/* component */0], compItems, "mr-4", (function (v) {
                                         return Curry._1(send, /* ChangeComponent */Block.__(0, [v]));
                                       }), /* array */[])), React.createElement("span", {
                                   className: "mr-1"
-                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, /* happy */572482848, moodItems, "mr-4", (function (v) {
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, state[/* mood */1], moodItems, "mr-4", (function (v) {
                                         return Curry._1(send, /* ChangeMood */Block.__(1, [v]));
                                       }), /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make(undefined, "Random", (function (param) {
-                                        return Prelude$ReasonreactExamples.choose2(values, values$1, (function (x, y) {
-                                                      Curry._1(send, /* ChangeComponent */Block.__(0, [x]));
-                                                      return Curry._1(send, /* ChangeMood */Block.__(1, [y]));
-                                                    }));
+                                        return Curry._1(send, /* Random */0);
                                       }), /* array */[]))), match >= 80675529 ? (
                             match >= 633016855 ? (
                                 match >= 646315823 ? ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.Ghost[/* make */0](state[/* mood */1], undefined, undefined, /* array */[])) : ReasonReact.element(undefined, undefined, Kawaii$ReasonreactExamples.IceCream[/* make */0](state[/* mood */1], undefined, undefined, /* array */[]))
@@ -159,13 +156,21 @@ function make$4(_children) {
             }),
           /* initialState */(function (param) {
               return /* record */[
-                      /* component : Ghost */646315823,
+                      /* component : Backpack */-64353120,
                       /* mood : happy */572482848
                     ];
             }),
           /* retainedProps */component[/* retainedProps */11],
           /* reducer */(function (action, state) {
-              if (action.tag) {
+              if (typeof action === "number") {
+                return /* SideEffects */Block.__(1, [(function (param) {
+                              var send = param[/* send */3];
+                              return Prelude$ReasonreactExamples.choose2(values, values$1, (function (x, y) {
+                                            Curry._1(send, /* ChangeComponent */Block.__(0, [x]));
+                                            return Curry._1(send, /* ChangeMood */Block.__(1, [y]));
+                                          }));
+                            })]);
+              } else if (action.tag) {
                 return /* Update */Block.__(0, [/* record */[
                             /* component */state[/* component */0],
                             /* mood */action[0]

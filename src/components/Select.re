@@ -6,44 +6,26 @@ module Make = (C: {type t;}) => {
     value: C.t,
   };
 
-  type state = {current: option(item)};
-
-  type action =
-    | ChangeCurrent(string);
-
-  let component = RR.reducerComponent(__MODULE__);
+  let component = RR.statelessComponent(__MODULE__);
 
   let make =
-      (
-        ~initValue=?,
-        ~items: array(item),
-        ~className="",
-        ~onChange=noOp,
-        _children,
-      ) => {
+      (~value, ~items: array(item), ~className="", ~onChange=noOp, _children) => {
     ...component,
-    initialState: () => {
-      current:
-        initValue->Option.mapWithDefault(None, initValue =>
-          items->Js.Array.find(item => item.value == initValue, _)
-        ),
-    },
-    reducer: (action, _state) =>
-      switch (action) {
-      | ChangeCurrent(label) =>
-        let item = items->Js.Array.find(item => item.label == label, _);
-        RR.UpdateWithSideEffects(
-          {current: item},
-          _ => item->Option.map(item => onChange(item.value))->ignore,
-        );
-      },
-    render: ({state, send}) =>
+
+    render: _self =>
       <select
         className={Cn.make(["border", className])}
-        value={state.current->Option.mapWithDefault("", item => item.label)}
+        value={
+          items
+          ->Js.Array.find(item => item.value == value, _)
+          ->Option.mapWithDefault("", item => item.label)
+        }
         onChange={evt => {
           let label = evt->ReactEvent.Form.target##value;
-          send @@ ChangeCurrent(label);
+          items
+          ->Js.Array.find(item => item.label == label, _)
+          ->Option.map(item => onChange(item.value))
+          ->ignore;
         }}>
         {items
          ->Array.map(item =>

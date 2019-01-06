@@ -56,19 +56,32 @@ type state = {
 
 type action =
   | ChangeComponent(component)
-  | ChangeMood(Kawaii.mood);
+  | ChangeMood(Kawaii.mood)
+  | Random;
 
 let component = RR.reducerComponent(__MODULE__);
 
 let make = _children => {
   ...component,
 
-  initialState: () => {component: `Ghost, mood: `happy},
+  initialState: () => {component: `Backpack, mood: `happy},
 
   reducer: (action, state) =>
     switch (action) {
     | ChangeComponent(component) => RR.Update({...state, component})
     | ChangeMood(mood) => RR.Update({...state, mood})
+    | Random =>
+      RR.SideEffects(
+        ({send}) =>
+          choose2(
+            ComponentSelect.values,
+            MoodSelect.values,
+            (x, y) => {
+              send @@ ChangeComponent(x);
+              send @@ ChangeMood(y);
+            },
+          ),
+      )
     },
 
   render: ({state, send}) =>
@@ -78,28 +91,16 @@ let make = _children => {
         <span className="mr-1"> "Mood:"->s </span>
         <ComponentSelect
           className="mr-4"
-          initValue=`Ghost
+          value={state.component}
           onChange={v => send @@ ChangeComponent(v)}
         />
         <span className="mr-1"> "Mood:"->s </span>
         <MoodSelect
           className="mr-4"
-          initValue=`happy
+          value={state.mood}
           onChange={v => send @@ ChangeMood(v)}
         />
-        <Button
-          text="Random"
-          onClick={_ =>
-            choose2(
-              ComponentSelect.values,
-              MoodSelect.values,
-              (x, y) => {
-                send @@ ChangeComponent(x);
-                send @@ ChangeMood(y);
-              },
-            )
-          }
-        />
+        <Button text="Random" onClick={_ => send @@ Random} />
       </div>
       {switch (state.component) {
        | `Backpack => <Backpack mood={state.mood} />
