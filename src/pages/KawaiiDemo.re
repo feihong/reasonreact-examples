@@ -13,9 +13,7 @@ type component = [
 ];
 
 module ComponentSelect = {
-  include Select.Make({
-    type t = component;
-  });
+  include Select;
 
   let compItems =
     [|
@@ -36,9 +34,7 @@ module ComponentSelect = {
 };
 
 module MoodSelect = {
-  include Select.Make({
-    type t = Kawaii.mood;
-  });
+  include Select;
 
   let moodItems =
     [|`sad, `shocked, `happy, `blissful, `lovestruck, `excited, `ko|]

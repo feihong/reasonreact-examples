@@ -10,10 +10,6 @@ import * as Kawaii$ReasonreactExamples from "../bindings/Kawaii.bs.js";
 import * as Select$ReasonreactExamples from "../components/Select.bs.js";
 import * as Prelude$ReasonreactExamples from "../Prelude.bs.js";
 
-var include = Select$ReasonreactExamples.Make(/* module */[]);
-
-var make = include[1];
-
 var compItems = Belt_Array.map(/* array */[
       /* tuple */[
         "backpack",
@@ -58,22 +54,18 @@ var values = Belt_Array.map(compItems, (function (item) {
         return item[/* value */1];
       }));
 
-function make$1(param) {
-  return Curry._2(make, param, compItems);
+function make(param) {
+  return (function (param$1, param$2, param$3) {
+      return Select$ReasonreactExamples.make(param, compItems, param$1, param$2, param$3);
+    });
 }
 
-var ComponentSelect_000 = /* component */include[0];
-
 var ComponentSelect = /* module */[
-  ComponentSelect_000,
+  /* component */Select$ReasonreactExamples.component,
   /* compItems */compItems,
   /* values */values,
-  /* make */make$1
+  /* make */make
 ];
-
-var include$1 = Select$ReasonreactExamples.Make(/* module */[]);
-
-var make$2 = include$1[1];
 
 var moodItems = Belt_Array.map(/* array */[
       /* sad */5740566,
@@ -94,22 +86,22 @@ var values$1 = Belt_Array.map(moodItems, (function (item) {
         return item[/* value */1];
       }));
 
-function make$3(param) {
-  return Curry._2(make$2, param, moodItems);
+function make$1(param) {
+  return (function (param$1, param$2, param$3) {
+      return Select$ReasonreactExamples.make(param, moodItems, param$1, param$2, param$3);
+    });
 }
 
-var MoodSelect_000 = /* component */include$1[0];
-
 var MoodSelect = /* module */[
-  MoodSelect_000,
+  /* component */Select$ReasonreactExamples.component,
   /* moodItems */moodItems,
   /* values */values$1,
-  /* make */make$3
+  /* make */make$1
 ];
 
 var component = Curry._1(Prelude$ReasonreactExamples.RR[/* reducerComponent */2], "KawaiiDemo-ReasonreactExamples");
 
-function make$4(_children) {
+function make$2(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -132,11 +124,11 @@ function make$4(_children) {
                               className: "mb-4"
                             }, React.createElement("span", {
                                   className: "mr-1"
-                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make, state[/* component */0], compItems, "mr-4", (function (v) {
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Select$ReasonreactExamples.make(state[/* component */0], compItems, "mr-4", (function (v) {
                                         return Curry._1(send, /* ChangeComponent */Block.__(0, [v]));
                                       }), /* array */[])), React.createElement("span", {
                                   className: "mr-1"
-                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Curry._5(make$2, state[/* mood */1], moodItems, "mr-4", (function (v) {
+                                }, Prelude$ReasonreactExamples.s("Mood:")), ReasonReact.element(undefined, undefined, Select$ReasonreactExamples.make(state[/* mood */1], moodItems, "mr-4", (function (v) {
                                         return Curry._1(send, /* ChangeMood */Block.__(1, [v]));
                                       }), /* array */[])), ReasonReact.element(undefined, undefined, Button$ReasonreactExamples.make(undefined, "Random", (function (param) {
                                         return Curry._1(send, /* Random */0);
@@ -190,7 +182,7 @@ export {
   ComponentSelect ,
   MoodSelect ,
   component ,
-  make$4 as make,
+  make$2 as make,
   
 }
-/* include Not a pure module */
+/* compItems Not a pure module */
