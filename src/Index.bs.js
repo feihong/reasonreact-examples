@@ -11,18 +11,9 @@ Random.self_init(/* () */0);
 
 ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, App$ReasonreactExamples.make(/* array */[])), "index");
 
-var match = module.hot;
-
-if (match == null) {
-  console.log("We are not hot");
-} else {
-  match.accept();
-}
-
-var Parcel = /* module */[];
+(((module.hot) ? module.hot.accept() : null));
 
 export {
-  Parcel ,
   
 }
 /*  Not a pure module */
