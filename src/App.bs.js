@@ -12,6 +12,7 @@ import * as Emojis$ReasonreactExamples from "./pages/Emojis.bs.js";
 import * as Prelude$ReasonreactExamples from "./Prelude.bs.js";
 import * as Scratch$ReasonreactExamples from "./pages/Scratch.bs.js";
 import * as KawaiiDemo$ReasonreactExamples from "./pages/KawaiiDemo.bs.js";
+import * as ContainerDemo$ReasonreactExamples from "./pages/ContainerDemo.bs.js";
 
 var sidebarLinks = /* array */[
   /* tuple */[
@@ -27,8 +28,12 @@ var sidebarLinks = /* array */[
     /* KawaiiDemo */3
   ],
   /* tuple */[
+    "Container",
+    /* Container */4
+  ],
+  /* tuple */[
     "Scratch",
-    /* Scratch */4
+    /* Scratch */5
   ]
 ];
 
@@ -36,6 +41,12 @@ function getPageFromUrl(url) {
   var match = url[/* path */0];
   if (match) {
     switch (match[0]) {
+      case "container" : 
+          if (match[1]) {
+            return /* NotFound */0;
+          } else {
+            return /* Container */4;
+          }
       case "emojis" : 
           if (match[1]) {
             return /* NotFound */0;
@@ -58,7 +69,7 @@ function getPageFromUrl(url) {
           if (match[1]) {
             return /* NotFound */0;
           } else {
-            return /* Scratch */4;
+            return /* Scratch */5;
           }
       default:
         return /* NotFound */0;
@@ -111,6 +122,9 @@ function make(_children) {
                     tmp = ReasonReact.element(undefined, undefined, KawaiiDemo$ReasonreactExamples.make(/* array */[]));
                     break;
                 case 4 : 
+                    tmp = ReasonReact.element(undefined, undefined, ContainerDemo$ReasonreactExamples.make(/* array */[]));
+                    break;
+                case 5 : 
                     tmp = ReasonReact.element(undefined, undefined, Scratch$ReasonreactExamples.make(/* array */[]));
                     break;
                 
