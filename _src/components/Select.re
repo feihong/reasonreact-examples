@@ -12,7 +12,7 @@ let make = (~value, ~items, ~className="", ~onChange=noOp, _children) => {
 
   render: _self =>
     <select
-      className={Cn.make(["border", className])}
+      className={Cn.("border" + className)}
       value={
         items
         ->Js.Array.find(item => item.value == value, _)

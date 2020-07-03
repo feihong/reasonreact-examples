@@ -1,8 +1,7 @@
 open Prelude;
 
-[@bs.module "emojilib"] external ordered: array(string) = "";
-[@bs.module "emojilib"]
-external fitzpatrick_scale_modifiers: array(string) = "";
+[@bs.module "emojilib"] external ordered: array(string) = "ordered";
+[@bs.module "emojilib"] external fitzpatrick_scale_modifiers: array(string) = "fitzpatrick_scale_modifiers";
 
 type emojiObj = {
   .
@@ -18,23 +17,17 @@ type emoji = {
   category: string,
 };
 
-[@bs.module "emojilib"] external lib: Js.Dict.t(emojiObj) = "";
+[@bs.module "emojilib"] external lib: Js.Dict.t(emojiObj);
 
 let emojiCount = ordered->Array.length;
 
-let defaultEmojiObj: emojiObj = {
-  "char": "smile",
-  "fitzpatrick_scale": false,
-  "category": "people",
-};
+let defaultEmojiObj: emojiObj = {"char": "smile", "fitzpatrick_scale": false, "category": "people"};
 
-let humanize = s => s->Js.String.replace([%bs.raw {|/_/g|}], " ", _);
+let humanize = s => s->Js.String2.replace([%bs.raw {|/_/g|}], " ");
 
 let randomFitzpatrickScale = () => {
   let index = Random.int(Array.length(fitzpatrick_scale_modifiers));
-  fitzpatrick_scale_modifiers
-  ->Array.get(index)
-  ->Option.getWithDefault({js|🏻|js});
+  fitzpatrick_scale_modifiers->Array.get(index)->Option.getWithDefault({js|🏻|js});
 };
 
 let getRandom = () => {

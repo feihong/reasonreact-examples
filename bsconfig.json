@@ -2,7 +2,7 @@
   "name": "reasonreact-examples",
   "version": "0.1.0",
   "reason": {
-    "react-jsx": 2
+    "react-jsx": 3
   },
   "sources": {
     "dir": "src",
@@ -13,10 +13,7 @@
     "in-source": true
   },
   "suffix": ".bs.js",
-  "bs-dependencies": [
-    "reason-react",
-    "re-classnames"
-  ],
+  "bs-dependencies": ["reason-react", "re-classnames"],
   "warnings": {
     "error": "+101"
   },
