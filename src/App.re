@@ -25,14 +25,18 @@ let notFound = {
   render: () => "That example was not found"->RR.s,
 };
 
+let exampleModules: list(module Example) = [
+  (module HelloWorld),
+  (module Emojis),
+];
+
 let examples: list(example) = {
-  let modules: list(module Example) = [(module HelloWorld), (module Emojis)];
-  let examplesFromModules =
-    modules->List.map(example => {
+  let examples =
+    exampleModules->List.map(example => {
       let (module Ex) = example;
       {title: Ex.title, slug: getSlug(Ex.title), render: Ex.render};
     });
-  [home, ...examplesFromModules];
+  [home, ...examples];
 };
 
 let getExampleFromPath = path => {
