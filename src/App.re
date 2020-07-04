@@ -1,11 +1,16 @@
 let getSlug = title =>
-  title->JsString.toLowerCase->JsString.replace([%raw {|/ /g|}], "-");
+  title->JsString.toLowerCase->JsString.replaceByRe([%re "/ /g"], "-");
 
 module type Example = {
   let title: string;
   let make: Js.t({.}) => React.element;
   let makeProps: (~key: string=?, unit) => Js.t({.});
 };
+
+let exampleModules: list(module Example) = [
+  (module HelloWorld),
+  (module Emojis),
+];
 
 type page = {
   title: string,
@@ -27,11 +32,6 @@ module Page = {
     render: () => "That example was not found"->RR.s,
   };
 };
-
-let exampleModules: list(module Example) = [
-  (module HelloWorld),
-  (module Emojis),
-];
 
 let pages: list(page) = {
   let pages =
