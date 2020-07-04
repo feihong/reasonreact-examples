@@ -7,6 +7,7 @@ import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.bs.js";
 import * as RR$ReasonreactExamples from "./RR.bs.js";
 import * as Title$ReasonreactExamples from "./widgets/Title.bs.js";
+import * as Emojis$ReasonreactExamples from "./examples/Emojis.bs.js";
 import * as HelloWorld$ReasonreactExamples from "./examples/HelloWorld.bs.js";
 
 function getSlug(title) {
@@ -38,9 +39,17 @@ var modules_0 = {
   render: HelloWorld$ReasonreactExamples.render
 };
 
+var modules_1 = {
+  hd: {
+    title: Emojis$ReasonreactExamples.title,
+    render: Emojis$ReasonreactExamples.render
+  },
+  tl: /* [] */0
+};
+
 var modules = {
   hd: modules_0,
-  tl: /* [] */0
+  tl: modules_1
 };
 
 var examplesFromModules = Belt_List.map(modules, (function (example) {

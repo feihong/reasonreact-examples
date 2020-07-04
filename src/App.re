@@ -15,6 +15,7 @@ type example = {
 let home = {
   title: "Home",
   slug: "",
+  // todo: add markdown support
   render: () => "Use the navigation menu to select an example"->RR.s,
 };
 
@@ -25,7 +26,7 @@ let notFound = {
 };
 
 let examples: list(example) = {
-  let modules: list(module Example) = [(module HelloWorld)];
+  let modules: list(module Example) = [(module HelloWorld), (module Emojis)];
   let examplesFromModules =
     modules->List.map(example => {
       let (module Ex) = example;
