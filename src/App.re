@@ -3,7 +3,8 @@ let getSlug = title =>
 
 module type Example = {
   let title: string;
-  let render: unit => React.element;
+  let make: Js.t({.}) => React.element;
+  let makeProps: (~key: string=?, unit) => Js.t({.});
 };
 
 type example = {
@@ -34,10 +35,12 @@ let examples: list(example) = {
   let examples =
     exampleModules->List.map(example => {
       let (module Ex) = example;
-      {title: Ex.title, slug: getSlug(Ex.title), render: Ex.render};
+      {title: Ex.title, slug: getSlug(Ex.title), render: () => <Ex />};
     });
   [home, ...examples];
 };
+
+// HelloWorld.make
 
 let getExampleFromPath = path => {
   let slug = path->List.head->Option.getWithDefault("");
