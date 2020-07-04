@@ -4,8 +4,6 @@ A set of examples for ReasonReact, built using Parcel. Set up was based on [this
 
 # Prerequisites
 
-    yarn global add bs-platform
-
 In VS Code, install `reason-vscode` plugin by Jared Forsyth.
 
 # Create project
