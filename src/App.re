@@ -7,6 +7,7 @@ module type Example = {
 let exampleModules: list(module Example) = [
   (module HelloWorld),
   (module Emojis),
+  (module Kawaiis),
 ];
 
 module Page = {

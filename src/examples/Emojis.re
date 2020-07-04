@@ -14,7 +14,7 @@ let make = () => {
     <div className="mb-4">
       <Button
         onClick={_ =>
-          setEmojis @@ Js.Array2.append(emojis, Emojilib.getRandom())
+          setEmojis @@ JsArray.append(emojis, Emojilib.getRandom())
         }>
         "Add"->RR.s
       </Button>
