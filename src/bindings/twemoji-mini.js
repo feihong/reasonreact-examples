@@ -1,3 +1,4 @@
+// Extracted from:
 // https://github.com/twitter/twemoji/blob/gh-pages/2/twemoji.js
 
 function toCodePoint(unicodeSurrogates, sep) {
@@ -22,6 +23,7 @@ function toCodePoint(unicodeSurrogates, sep) {
 const U200D = String.fromCharCode(0x200d);
 const UFE0Fg = /\uFE0F/g;
 
+// Given an emoji character, return the corresponding code point
 function grabTheRightIcon(rawText) {
   // if variant is present as \uFE0F
   return toCodePoint(
