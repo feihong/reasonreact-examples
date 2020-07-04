@@ -4,43 +4,48 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_List from "bs-platform/lib/es6/belt_List.js";
 import * as RR$ReasonreactExamples from "./RR.bs.js";
+import * as Title$ReasonreactExamples from "./widgets/Title.bs.js";
 import * as HelloWorld$ReasonreactExamples from "./examples/HelloWorld.bs.js";
 
-function App$Title(Props) {
-  var children = Props.children;
-  return React.createElement("h1", {
-              className: "text-4xl"
-            }, children);
+function getSlug(title) {
+  return title.toLowerCase().replace(/_/g, "-");
 }
 
-var Title = {
-  make: App$Title
-};
-
-function render(param) {
+function home_render(param) {
   return RR$ReasonreactExamples.s("Use the navigation menu to select an example");
 }
 
-var Home = {
+var home = {
   title: "Home",
-  render: render
+  slug: "home",
+  render: home_render
 };
 
-var examples_1 = {
-  hd: {
-    title: HelloWorld$ReasonreactExamples.title,
-    render: HelloWorld$ReasonreactExamples.render
-  },
+var modules_0 = {
+  title: HelloWorld$ReasonreactExamples.title,
+  render: HelloWorld$ReasonreactExamples.render
+};
+
+var modules = {
+  hd: modules_0,
   tl: /* [] */0
 };
 
+var examplesFromModules = Belt_List.map(modules, (function (example) {
+        return {
+                title: example.title,
+                slug: getSlug(example.title),
+                render: example.render
+              };
+      }));
+
 var examples = {
-  hd: Home,
-  tl: examples_1
+  hd: home,
+  tl: examplesFromModules
 };
 
 function App(Props) {
-  var match = RR$ReasonreactExamples.useStateValue(Home);
+  var match = RR$ReasonreactExamples.useStateValue(home);
   var setExample = match[1];
   var example = match[0];
   return React.createElement("div", {
@@ -62,7 +67,7 @@ function App(Props) {
                   style: {
                     gridTemplateRows: "auto 1fr"
                   }
-                }, React.createElement(App$Title, {
+                }, React.createElement(Title$ReasonreactExamples.make, {
                       children: RR$ReasonreactExamples.s(example.title)
                     }), Curry._1(example.render, undefined)));
 }
@@ -70,10 +75,10 @@ function App(Props) {
 var make = App;
 
 export {
-  Title ,
-  Home ,
+  getSlug ,
+  home ,
   examples ,
   make ,
   
 }
-/* react Not a pure module */
+/* examplesFromModules Not a pure module */

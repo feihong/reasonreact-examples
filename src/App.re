@@ -1,27 +1,38 @@
+let getSlug = title =>
+  title->JsString.toLowerCase->JsString.replace([%raw {|/_/g|}], "-");
+
 module type Example = {
   let title: string;
-
   let render: unit => React.element;
 };
 
-module Title = {
-  [@react.component]
-  let make = (~children) => <h1 className="text-4xl"> children </h1>;
+type example = {
+  title: string,
+  slug: string,
+  render: unit => React.element,
 };
 
-module Home = {
-  let title = "Home";
-
-  let render = () => "Use the navigation menu to select an example"->RR.s;
+let home = {
+  title: "Home",
+  slug: "home",
+  render: () => "Use the navigation menu to select an example"->RR.s,
 };
 
-let examples: list(module Example) = [(module Home), (module HelloWorld)];
+let examples: list(example) = {
+  let modules: list(module Example) = [(module HelloWorld)];
+  let examplesFromModules =
+    modules->List.map(example => {
+      let (module Ex) = example;
+      {title: Ex.title, slug: getSlug(Ex.title), render: Ex.render};
+    });
+  [home, ...examplesFromModules];
+};
 
 [@react.component]
 let make = () => {
-  let (example, setExample) =
-    RR.useStateValue((module Home): (module Example));
-  let (module Ex) = example;
+  // let url = ReasonReactRouter.useUrl();
+
+  let (example, setExample) = RR.useStateValue(home);
 
   <div className="h-screen flex flex-row">
     <div className="bg-blue-600 text-white py-4 px-6 mr-8">
@@ -32,8 +43,7 @@ let make = () => {
              key={i->string_of_int}
              className="cursor-pointer"
              onClick={_ => setExample(example)}>
-             {let (module Ex) = example;
-              Ex.title->RR.s}
+             example.title->RR.s
            </div>
          )
        ->RR.list}
@@ -41,8 +51,8 @@ let make = () => {
     <div
       className="mt-4 grid gap-4"
       style={ReactDOMRe.Style.make(~gridTemplateRows="auto 1fr", ())}>
-      <Title> Ex.title->RR.s </Title>
-      {Ex.render()}
+      <Title> example.title->RR.s </Title>
+      {example.render()}
     </div>
   </div>;
 };
