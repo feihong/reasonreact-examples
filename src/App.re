@@ -1,5 +1,5 @@
 let getSlug = title =>
-  title->JsString.toLowerCase->JsString.replace([%raw {|/_/g|}], "-");
+  title->JsString.toLowerCase->JsString.replace([%raw {|/ /g|}], "-");
 
 module type Example = {
   let title: string;
@@ -14,8 +14,14 @@ type example = {
 
 let home = {
   title: "Home",
-  slug: "home",
+  slug: "",
   render: () => "Use the navigation menu to select an example"->RR.s,
+};
+
+let notFound = {
+  title: "Not found",
+  slug: "not-found",
+  render: () => "That example was not found"->RR.s,
 };
 
 let examples: list(example) = {
@@ -28,11 +34,18 @@ let examples: list(example) = {
   [home, ...examplesFromModules];
 };
 
+let getExampleFromPath = path => {
+  let slug = path->List.head->Option.getWithDefault("");
+  examples
+  ->List.getBy(ex => ex.slug == slug)
+  ->Option.getWithDefault(notFound);
+};
+
 [@react.component]
 let make = () => {
-  // let url = ReasonReactRouter.useUrl();
+  let url = ReasonReactRouter.useUrl();
 
-  let (example, setExample) = RR.useStateValue(home);
+  let example = getExampleFromPath(url.path);
 
   <div className="h-screen flex flex-row">
     <div className="bg-blue-600 text-white py-4 px-6 mr-8">
@@ -42,7 +55,7 @@ let make = () => {
            <div
              key={i->string_of_int}
              className="cursor-pointer"
-             onClick={_ => setExample(example)}>
+             onClick={_ => ReasonReactRouter.push("/" ++ example.slug)}>
              example.title->RR.s
            </div>
          )
